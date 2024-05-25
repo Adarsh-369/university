@@ -38,7 +38,7 @@ public class StudentController {
 
     @DeleteMapping("/students/{studentId}")
     public void deleteStudent(@PathVariable("studentId") int studentId) {
-        studentJpaservice.deleteStudent(studentId);
+        studentJpaService.deleteStudent(studentId);
     }
 
     @GetMapping("/students/{studentId}/courses")

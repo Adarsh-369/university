@@ -3,7 +3,7 @@ package com.example.university.controller;
 import com.example.university.model.Course;
 import com.example.university.model.Professor;
 import com.example.university.model.Student;
-import com.example.university.service.CourseJpaService; 
+import com.example.university.service.CourseJpaService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,13 +26,13 @@ public class CourseController {
     }
 
     @PostMapping("/courses")
-    public Course addCourse(@RequestedBody Course course) {
+    public Course addCourse(@RequestBody Course course) {
 
         return courseJpaService.addCourse(course);
     }
 
     @PutMapping("/courses/{courseId}")
-    public Course updateCourse(@PathVariable("courseId") int courseId, @RequestedBody Course course) {
+    public Course updateCourse(@PathVariable("courseId") int courseId, @RequestBody Course course) {
         return courseJpaService.updateCourse(courseId, course);
     }
 

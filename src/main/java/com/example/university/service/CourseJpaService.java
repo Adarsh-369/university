@@ -10,7 +10,7 @@ import com.example.university.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponsesStatusException;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class CourseJpaService implements CourseRepository {
@@ -21,7 +21,7 @@ public class CourseJpaService implements CourseRepository {
     @Autowired
     private ProfessorJpaRepository professorJpaRepository;
 
-    @Override 
+    @Override
     public List<Course> getCourses() {
         List<Course> courseList = courseJpaRepository.findAll();
         ArrayList<Course> courses = new ArrayList<>(courseList);
@@ -34,7 +34,7 @@ public class CourseJpaService implements CourseRepository {
             Course course = courseJpaRepository.findById(courseId).get();
             return course;
         } catch (Exception e) {
-            throw new RepositoryStatusException(HttpStatus.NOT_FOUND, "Wrong courseId");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong courseId");
         }
     }
 
@@ -50,7 +50,7 @@ public class CourseJpaService implements CourseRepository {
             return course;
         } catch (Exception e) {
 
-            throw new ReponseStatusException(HttpStatus.NOT_FOUND, "Wrong professorId");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong professorId");
         }
 
     }
@@ -67,14 +67,14 @@ public class CourseJpaService implements CourseRepository {
             }
             if (course.getProfessor() != null) {
                 Professor professor = course.getProfessor();
-                int professorId = professor.getprofessorJpaRepository.findById(professorId).get();
+                int professorId = professor.getProfessorId();
                 Professor newProfessor = professorJpaRepository.findById(professorId).get();
                 newCourse.setProfessor(newProfessor);
             }
             courseJpaRepository.save(newCourse);
             return newCourse;
         } catch (Exception e) {
-            throw new ReponseStatusException(HttpStatus.NOT_FOUND, "Wrong professorId");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong professorId");
         }
     }
 
@@ -106,5 +106,5 @@ public class CourseJpaService implements CourseRepository {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong professorId");
         }
     }
-    
+
 }

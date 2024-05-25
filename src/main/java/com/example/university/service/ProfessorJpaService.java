@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.university.model.*;
 
-import com.example.university.repository.professorJpaRepository;
+import com.example.university.repository.ProfessorJpaRepository;
 import com.example.university.repository.ProfessorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class ProfessorJpaService implements ProfessorRepository {
     @Override
     public Professor addProfessor(Professor professor) {
         professorJpaRepository.save(professor);
-        return Professor;
+        return professor;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ProfessorJpaService implements ProfessorRepository {
             professorJpaRepository.save(newProfessor);
             return newProfessor;
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT - FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -71,7 +71,6 @@ public class ProfessorJpaService implements ProfessorRepository {
 
     @Override
     public Course getProfessorCourse(int professorId) {
-        // TODO Auto-generated method stub
         return null;
     }
 }

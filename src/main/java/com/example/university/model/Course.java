@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "course") 
+@Table(name = "course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,12 @@ public class Course {
     @JoinColumn(name = "professorid")
     private Professor professor;
     @ManyToMany
-    @JoinTable(name = "course_student", joinColumns = @joinColumn(name = "courseid"), 
-           inverseJoinColumns = @joinColumn(name = "studentid"))
+    @JoinTable(name = "course_student", joinColumns = @JoinColumn(name = "courseid"), inverseJoinColumns = @JoinColumn(name = "studentid"))
     @JsonIgnoreProperties("courses")
 
     private List<Student> students = new ArrayList<>();
 
-    public course() {
+    public Course() {
     }
 
     public Course(int courseId, String courseName, int credits, Professor professor, List<Student> students) {
@@ -70,7 +69,7 @@ public class Course {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
-    } 
+    }
 
     public List<Student> getStudents() {
         return students;

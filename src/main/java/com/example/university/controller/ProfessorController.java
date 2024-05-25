@@ -16,12 +16,12 @@ public class ProfessorController {
 
     @GetMapping("/professors")
     public ArrayList<Professor> getProfessors() {
-        return ProfessorJpaService.getProfessors();
+        return professorJpaService.getProfessors();
     }
 
     @GetMapping("/professors/{professorId}/courses")
     public List<Course> getProfessorCourses(@PathVariable("professorId") int professorId) {
-        return professorJpaService.getProfessorCourses(professorId);
+        return professorJpaService.getProfessorById(professorId);
     }
 
     @GetMapping("/professors/{professorId}")
@@ -40,11 +40,11 @@ public class ProfessorController {
     public Professor updateProfessor(@PathVariable("professorId") int professorId, @RequestBody Professor professor) {
         return professorJpaService.updateProfessor(professorId, professor);
     }
-    
+
     @DeleteMapping("/professors/{professorId}")
 
     public void deleteProfessor(@PathVariable("professorId") int professorId) {
         professorJpaService.deleteProfessor(professorId);
     }
-    
+
 }
