@@ -69,8 +69,13 @@ public class ProfessorJpaService implements ProfessorRepository {
 
     }
 
-    @Override
-    public Course getProfessorCourses(int professorId) {
-        return null;
+     @Override
+    public List<Course> getProfessorCourses(int professorId) {
+        try {
+            Professor professor = professorJpaRepository.findById(professorId).get();
+            return courseJpaRepository.findByProfessor(professor);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "professorId " + professorId + " not found");
+        }
     }
 }

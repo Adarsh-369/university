@@ -17,5 +17,5 @@ public interface ProfessorRepository {
 
     void deleteProfessor(int professorId);
 
-    Course getProfessorCourses(int professorId);
+    List<Course> getProfessorCourses(int professorId);
 }
