@@ -70,7 +70,7 @@ public class ProfessorJpaService implements ProfessorRepository {
     }
 
     @Override
-    public Course getProfessorCourse(int professorId) {
+    public Course getProfessorCourses(int professorId) {
         return null;
     }
 }

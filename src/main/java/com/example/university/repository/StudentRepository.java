@@ -11,7 +11,7 @@ public interface StudentRepository {
 
     Student getStudentById(int studentId);
 
-    Student addStudent(Student student);
+    Student addStudent(Student studentId);
 
     Student updateStudent(int studentId, Student student);
 

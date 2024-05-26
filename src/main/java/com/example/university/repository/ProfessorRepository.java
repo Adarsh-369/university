@@ -1,7 +1,8 @@
 package com.example.university.repository;
 
-import com.example.university.model.Professor;
 import com.example.university.model.Course;
+import com.example.university.model.Professor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
@@ -16,5 +17,5 @@ public interface ProfessorRepository {
 
     void deleteProfessor(int professorId);
 
-    Course getProfessorCourse(int professorId);
+    Course getProfessorCourses(int professorId);
 }
